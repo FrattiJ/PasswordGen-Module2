@@ -1,12 +1,12 @@
 // Define variable for special characters, numeric characters, lowercase characters, and uppercase characters
-// Check if it would be bterr to use regular expressions or CharCodes?
+// Check if it would be better to use regular expressions or CharCodes? RegEx would have higher BigO and i dont understand CharCodes
 const specialCharacters = "@%+\\/'!#$^?:,)(}{][~`.-_";
 const numericCharacters = "0123456789";
 const lowerCasedCharacters = "abcdefghijklmnopqrstuvwxyz";
 const upperCasedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // Function to get user inputs for password length
-const getUserImputs = () => {
+const getUserInputs = () => {
   // Prompt to determine password length
   let length = parseInt(prompt('How many characters would you like your password to be? (must be between 8-128 characters)'), 10);
   
@@ -40,10 +40,11 @@ const generatePassword = (length) => {
   };
 
   // Prompt to get user options for password
-  // Is there prompt options to sellect more than cancel or okay?
-  // maybe change it so you can just type "1" for characters "2" for numbers... ect?
-  let optionsImput = prompt("Type 'characters, numbers, lowercase or uppercase' seperated by a comma to include them in your password");
-  let options = optionsImput.toLowerCase().split(', ').filter(option => option in characters);
+  // Is there prompt options to sellect more than cancel or okay? Not possible from what i can find
+  // maybe change it so you can just type "1" for characters "2" for numbers... ect? Too confusing maybe
+  let optionsInput = prompt("Type 'characters, numbers, lowercase or uppercase' seperated by a comma to include them in your password");
+
+  let options = optionsInput.toLowerCase().split(', ').filter(option => option in characters);
 
   // Check if the options selected are valid
   if (options.length === 0) {
@@ -66,7 +67,7 @@ const generatePassword = (length) => {
 var generateBtn = document.querySelector("#generate");
 
 function writePassword() {
-  var length = getUserImputs();
+  var length = getUserInputs();
   var password = generatePassword(length);
   var passwordText = document.querySelector("#password");
 
